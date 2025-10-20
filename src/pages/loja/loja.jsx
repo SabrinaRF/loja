@@ -1,5 +1,7 @@
 
 import Produto from "../../components/produto/produto";
+import listProd  from "../components/produto/listarProd;
+
 export default function Loja () {
     
     return (
@@ -14,6 +16,10 @@ export default function Loja () {
                 estrela4
                 estrela5
                 />
+
+      <listProd produtos={produtos}/>
+
+
         </div>
 
         
