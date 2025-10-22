@@ -1,10 +1,12 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
-import { Link } from "react-router-dom";
-import ListProd from "./listarProd";
+import Header from "../header/header";
+import Footer from "../footer/footer";
 export default function Produto({ imagem ,titulo,estrelas , valor}) {
 return(
-    <Card style={{ width: '12rem', marginBottom: "1rem", marginTop:"2rem"}}>
+    <main>
+    <Header nome="Minha Loja" />
+<Card style={{ width: '12rem', marginBottom: "1rem", marginTop:"2rem"}}>
       <Card.Img variant="top" 
       src={`https://placehold.co/60x60/000000/FFFFFF/png/?text=${titulo}`}/>{imagem}
       <Card.Body>
@@ -36,13 +38,11 @@ return(
 
         </Card.Text>
         <button type="button" class="btn btn-success">Comprar</button>
-        <Link to='/produto'>
-        <button type="button" class="btn btn-success">Visualizar Produto
-
-        </button>
-        </Link>
       </Card.Body>
     </Card>
+  <Footer nome="Direitos Autorais. 2025." />
+    </main>
+    
 )
 
 }
