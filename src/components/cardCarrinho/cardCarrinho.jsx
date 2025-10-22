@@ -1,6 +1,6 @@
 import Item from '../item/item.jsx';
 
-export default function Carrinho({ itensCarrinho }) {
+export default function CardCarrinho({ itensCarrinho }) {
 
     const soma = itensCarrinho.reduce((acc, valor) => acc + valor.valor, 0);
     return (
