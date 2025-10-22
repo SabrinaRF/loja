@@ -1,4 +1,9 @@
+import Button from '../button/button';
+import { useCarrinho } from "../../contexts/CarrinhoContext";
+
 export default function Item({ imagem, nome, valor }) {
+    const { removerItem } = useCarrinho();
+
     return (
         <div className="list-group-item d-flex align-items-center justify-content-between">
             <div className="d-flex align-items-center">
@@ -13,7 +18,7 @@ export default function Item({ imagem, nome, valor }) {
                     <small>R$ {valor}</small>
                 </div>
             </div>
-            <button className="btn btn-warning btn-sm">Excluir</button>
+            <Button className="btn btn-warning btn-sm" onClick={removerItem}>Excluir</Button>
         </div>
     );
 }
