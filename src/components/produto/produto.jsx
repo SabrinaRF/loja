@@ -2,7 +2,8 @@ import React from "react";
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import ListProd from "./listarProd";
-export default function Produto({ imagem ,titulo,estrelas , valor}) {
+
+export default function Produto({id,imagem ,titulo,estrelas , valor}) {
 return(
     <Card style={{ width: '12rem', marginBottom: "1rem", marginTop:"2rem"}}>
       <Card.Img variant="top" 
@@ -36,7 +37,7 @@ return(
 
         </Card.Text>
         <button type="button" class="btn btn-success">Comprar</button>
-        <Link to='/produto'>
+        <Link to={`/produto/${id}`}>
         <button type="button" class="btn btn-success">Visualizar Produto
 
         </button>

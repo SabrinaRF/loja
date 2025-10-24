@@ -6,10 +6,13 @@ export default function ListProd({produtos}){
       {produtos.map((produtos)=>
       <Produto 
       key={produtos.id}
+      id={produtos.id}
       imagem={produtos.imagem}
       titulo={produtos.titulo}
       valor={produtos.valor}
       estrelas={produtos.estrelas}
+      avaliacao={produtos.avaliacao}
+      descricao={produtos.descricao}
 
       />
       )}

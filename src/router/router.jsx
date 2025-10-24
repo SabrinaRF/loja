@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
         element: <NotFound />
     },
     {
-        path: '/produto',
+        path: '/produto/:id',
         element : <PaginaProduto />
     }
 ]);

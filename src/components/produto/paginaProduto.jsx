@@ -1,45 +1,61 @@
+import {useParams,Link } from "react-router-dom";
 import React from "react";
 import Card from 'react-bootstrap/Card';
 import Header from "../header/header";
 import Footer from "../footer/footer";
-export default function Produto({ imagem ,titulo,estrelas , valor}) {
+import produtos from "../../data/produto";
+export default function PaginaProduto() {
+  const {id} = useParams();
+  const produtoSelecionado = produtos.find(p => p.id.toString() === id)
 return(
     <main>
     <Header nome="Minha Loja" />
-<Card style={{ width: '12rem', marginBottom: "1rem", marginTop:"2rem"}}>
-      <Card.Img variant="top" 
-      src={`https://placehold.co/60x60/000000/FFFFFF/png/?text=${titulo}`}/>{imagem}
-      <Card.Body>
-        <Card.Title>{titulo}</Card.Title>
-        <Card.Text>
-              <strong><h6> R$ {valor}</h6></strong>
-              {Array.from({length: 5},(_, i) => (
-                <svg
-                width="16"
-                height="16"
-                fill={i < estrelas ? "gold" : "lightgray"}
-                className="bi bi-star"
-                viewBox="0 0 16 16"
-                style={{marginRight: "3px"}}
-                >
-                  <path d="M2.886 14.85c-.078.444.36.791.746.593l4.39-2.256 
-                       4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 
-                       3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792
-                       a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696
-                       c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767
-                       -3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745
-                       l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658
-                       a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77
-                       a.56.56 0 0 0-.163.506l.694 3.957
-                       -3.686-1.894a.5.5 0 0 0-.461 0z" />
-                </svg>
-              ))}
+    <div className="container mt-4 mb-5"></div>
+    <button
+    className="btn btn-link text-decoration-none"
+    onClick={()=> Navigate(-1)}
+    >
+     Voltar
+    </button>
+    <div className="col-md-5 text-center">
+      <img src={`https://placehold.co/60x60/000000/FFFFFF/png/?text=${produtoSelecionado.titulo}`}
+      alt={produtoSelecionado.titulo}
+      className="img-fluid rounded shadow-sm" />
+    </div>
+    <div className="col-md-7">
+      <h2>{produtoSelecionado.titulo}</h2>
+      <div className="d-felx align-items-center mb-2">
+        {Array.from({length: 5}, (_,i) =>(
+          <svg
+          key={i}
+          width="22"
+          height="22"
+          fill={i< produtoSelecionado.estrelas ? "gold": "lightgray"}
+          className="bi bi-star-fill"
+          viewBox="0 0 16 16"
+          style={{marginRight: "3px"}}
+          >
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73-3.522-3.356c-.33-.314-.16-.888.282-.95l4.898-.696L8 1.223l2.646 4.896 4.898.696c.442.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+          </svg>
+        ))}
 
+        <span className="ms-2 text-secundary">{produtoSelecionado.avaliacao}</span>
 
-        </Card.Text>
-        <button type="button" class="btn btn-success">Comprar</button>
-      </Card.Body>
-    </Card>
+      </div>
+      <div className="border rounded p-3 bg-light mb-3">
+        <strong>Deescrição</strong> {produtoSelecionado.descricao}
+      </div>
+      <div>
+        <h3 className="text-success fw-bold">
+          R$ {produtoSelecionado.valor.toFixed(2)}
+        </h3>
+      </div>
+      <div>
+        <button className="btn-success mt-3 px-4 py-2">
+        Comprar
+        </button>
+      </div>
+    </div>
   <Footer nome="Direitos Autorais. 2025." />
     </main>
     
