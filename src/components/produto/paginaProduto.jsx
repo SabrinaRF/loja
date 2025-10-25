@@ -7,24 +7,25 @@ import produtos from "../../data/produto";
 export default function PaginaProduto() {
   const {id} = useParams();
   const produtoSelecionado = produtos.find(p => p.id.toString() === id)
-return(
+    return(
     <main>
     <Header nome="Minha Loja" />
-    <div className="container mt-4 mb-5"></div>
-    <button
-    className="btn btn-link text-decoration-none"
-    onClick={()=> Navigate(-1)}
+
+    <div className="container mt-5 mb-5 d-flex flex-column align-items-center"
+    style={{minHeight: "70vh"}}
     >
-     Voltar
-    </button>
-    <div className="col-md-5 text-center">
-      <img src={`https://placehold.co/60x60/000000/FFFFFF/png/?text=${produtoSelecionado.titulo}`}
+      <div className="d-felx flex-column flex-md-row align-items-center justify-content-center justify-content-md-start mb-3 " 
+      style={{width: "100%", maxWidth:"900px"}}>
+    <div className="col-md-5 text-center mb-4 mb-md-0">
+      <img src={`https://placehold.co/630x424/000000/FFFFFF/png/?text=${produtoSelecionado.titulo}`}
       alt={produtoSelecionado.titulo}
-      className="img-fluid rounded shadow-sm" />
+      className="img-fluid rounded"
+       />
     </div>
-    <div className="col-md-7">
-      <h2>{produtoSelecionado.titulo}</h2>
-      <div className="d-felx align-items-center mb-2">
+    <div className="col-md-7 text-center text-md-start">
+      <h2 className="fw-bold mb-3">{produtoSelecionado.titulo}</h2>
+
+      <div className="d-flex align-items-center justify-content-center justify-content-md-start mb-3">
         {Array.from({length: 5}, (_,i) =>(
           <svg
           key={i}
@@ -39,26 +40,29 @@ return(
           </svg>
         ))}
 
-        <span className="ms-2 text-secundary">{produtoSelecionado.avaliacao}</span>
+        <span className="ms-2 text-secundary">
+          {produtoSelecionado.avaliacao}
+          </span>
 
       </div>
-      <div className="border rounded p-3 bg-light mb-3">
-        <strong>Deescrição</strong> {produtoSelecionado.descricao}
-      </div>
+      <p class="d-block p-3 my-3 fw-normal rounded border">
+        <strong>Descrição: </strong> {produtoSelecionado.descricao}
+      </p>
+        
       <div>
-        <h3 className="text-success fw-bold">
+        <h3 className="text-success fw-bold mb-3">
           R$ {produtoSelecionado.valor.toFixed(2)}
         </h3>
       </div>
       <div>
-        <button className="btn-success mt-3 px-4 py-2">
+        <button className="btn btn-success px-4 py-2">
         Comprar
         </button>
       </div>
     </div>
+    </div>
+    </div>
   <Footer nome="Direitos Autorais. 2025." />
-    </main>
-    
-)
-
+  </main>
+  );
 }
