@@ -21,4 +21,6 @@ export const router = createBrowserRouter([
         path: '/produto/:id',
         element: <PaginaProduto />
     }
-]);
+], {
+    basename: '/loja/'
+});

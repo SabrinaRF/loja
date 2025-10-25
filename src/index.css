@@ -6,8 +6,3 @@
 #root {
   height: 100vh;
 }
-:root {
-  --primary-color: #0d6dfc;
-  --primary-dark-color: #040f24;
-  --secondary-color: #ccd2d9;
-}
