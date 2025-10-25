@@ -4,7 +4,7 @@ import { RouterProvider } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootswatch/dist/sketchy/bootstrap.min.css';
 import './index.css'
-import { CarrinhoProvider } from './contexts/CarrinhoContext';
+import { CarrinhoProvider } from './contexts/CarrinhoContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <CarrinhoProvider>

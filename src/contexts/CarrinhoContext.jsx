@@ -1,9 +1,19 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import produtosData from "../data/db.json";
 
 const CarrinhoContext = createContext();
 
 export function CarrinhoProvider({ children }) {
     const [carrinho, setCarrinho] = useState([]);
+    const [produtos, setProdutos] = useState([]);
+
+    useEffect(() => {
+        carregarProdutos();
+    }, []);
+
+    function carregarProdutos() {
+        setProdutos(produtosData);
+    }
 
     const adicionarItem = (produto) => {
         setCarrinho((prev) => {
@@ -17,6 +27,14 @@ export function CarrinhoProvider({ children }) {
             }
             return [...prev, { ...produto, quantidade: 1 }];
         });
+    };
+
+    const editarQuantidade = (id, novaQuantidade) => {
+        setCarrinho((prev) =>
+            prev.map((item) =>
+                item.id === id ? { ...item, quantidade: novaQuantidade } : item
+            )
+        );
     };
 
     const removerItem = (id) => {
@@ -38,15 +56,31 @@ export function CarrinhoProvider({ children }) {
         0
     );
 
+    const finalizarCompra = () => {
+        if (carrinho.length === 0) {
+            alert("O carrinho está vazio!");
+            return;
+        }
+        alert("Compra finalizada com sucesso! Obrigado pela preferência 😊");
+        limparCarrinho();
+    };
+
     return (
         <CarrinhoContext.Provider
-            value={{ carrinho, adicionarItem, removerItem, limparCarrinho, total }}
+            value={{
+                carrinho,
+                produtos,
+                adicionarItem,
+                removerItem,
+                editarQuantidade,
+                limparCarrinho,
+                finalizarCompra,
+                total
+            }}
         >
             {children}
         </CarrinhoContext.Provider>
     );
 }
 
-export function useCarrinho() {
-    return useContext(CarrinhoContext);
-}
+export { CarrinhoContext };

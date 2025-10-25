@@ -1,24 +1,51 @@
-import Button from '../button/button';
-import { useCarrinho } from "../../contexts/CarrinhoContext";
+import Button from '../button/Button';
+import { useCarrinho } from "../../hooks/useCarrinho";
 
-export default function Item({ imagem, nome, valor }) {
-    const { removerItem } = useCarrinho();
+export default function Item({ item }) {
+    const { removerItem, editarQuantidade } = useCarrinho();
 
     return (
-        <div className="list-group-item d-flex align-items-center justify-content-between">
-            <div className="d-flex align-items-center">
+        <div className="list-group-item d-flex align-items-center justify-content-between py-3">
+            <div className="d-flex align-items-center gap-3">
                 <img
-                    src={imagem}
-                    alt={nome}
-                    className="me-3 rounded"
-                    style={{ width: '70px', height: '45px', objectFit: 'cover' }}
+                    src={`https://placehold.co/60x60/000000/FFFFFF/png/?text=${encodeURIComponent(item.titulo)}`}
+                    alt={item.titulo}
+                    className="rounded-circle"
+                    style={{ width: 60, height: 60, objectFit: 'cover' }}
                 />
                 <div>
-                    <p className="mb-0 fw-bold">{nome}</p>
-                    <small>R$ {valor}</small>
+                    <h6 className="mb-1">{item.titulo}</h6>
+                    <small>R$ {Number(item.valor).toFixed(2)}</small>
                 </div>
             </div>
-            <Button className="btn btn-warning btn-sm" onClick={removerItem}>Excluir</Button>
+
+            <div className="d-flex align-items-center gap-2">
+                <button
+                    className="btn btn-outline-secondary btn-sm"
+                    onClick={() => editarQuantidade(item.id, Math.max(1, item.quantidade - 1))}
+                    disabled={item.quantidade === 1}
+                    aria-label="Diminuir quantidade"
+                >
+                    -
+                </button>
+
+                <span className="px-2">{item.quantidade}</span>
+
+                <button
+                    className="btn btn-outline-secondary btn-sm"
+                    onClick={() => editarQuantidade(item.id, item.quantidade + 1)}
+                    aria-label="Aumentar quantidade"
+                >
+                    +
+                </button>
+
+                <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => removerItem(item.id)}
+                >
+                    Excluir
+                </button>
+            </div>
         </div>
     );
 }

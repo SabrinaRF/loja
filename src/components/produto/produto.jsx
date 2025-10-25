@@ -1,7 +1,8 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
-import ListProd from "./listarProd";
-import { useCarrinho } from "../../contexts/CarrinhoContext";
+import { Link } from "react-router-dom";
+import ListProd from "./ListarProd";
+import { useCarrinho } from "../../hooks/useCarrinho";
 
 export default function Produto({ produto }) {
   const { adicionarItem } = useCarrinho();
@@ -41,6 +42,12 @@ export default function Produto({ produto }) {
           onClick={() => adicionarItem(produto)}
           className="btn btn-success"
         >Comprar</button>
+
+        <Link to='/produto'>
+          <button type="button" class="btn btn-success">Visualizar Produto
+
+          </button>
+        </Link>
       </Card.Body>
     </Card>
   )

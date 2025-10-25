@@ -1,6 +1,6 @@
 export default function Button({ texto, onClick }) {
     return (
-        <button onClick={onClick}>
+        <button className="btn btn-primary mb-3" onClick={onClick}>
             {texto}
         </button>
     );

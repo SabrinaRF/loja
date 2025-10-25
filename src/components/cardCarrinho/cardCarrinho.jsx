@@ -1,29 +1,20 @@
-import Button from '../button/button';
-import { useCarrinho } from '../../contexts/CarrinhoContext.jsx';
+import { useCarrinho } from '../../hooks/useCarrinho.js';
 import Item from '../item/item.jsx';
 
 export default function CardCarrinho({ itensCarrinho }) {
-    const { limparCarrinho, total } = useCarrinho();
+    const { total } = useCarrinho();
     console.log(itensCarrinho);
     return (
-        <div className="container">
-            <h3>Carrinho</h3>
-            <div className="card bg-light p-3 mt-2">
-                <p><strong>Itens:</strong> {itensCarrinho.length}</p>
-                <p><strong>Total:</strong> R$ {total}</p>
+        <div className="card-body">
+            <div className="mb-3">
+                <p className="card-text mb-0"><strong>Itens:</strong> {itensCarrinho.length}</p>
+                <p className="card-text"><strong>Total:</strong> R$ {Number(total).toFixed(2)}</p>
+            </div>
 
-                <div className="list-group mb-3">
-                    {/* {itensCarrinho.map(item => (
-                        <Item
-                            key={item.id}
-                            imagem={`https://placehold.co/60x60/000000/FFFFFF/png/?text=${item.nome}`}
-                            nome={item.nome}
-                            valor={item.valor}
-                        />
-                    ))} */}
-                </div>
-
-                <Button className="btn btn-danger btn-sm" onClick={limparCarrinho}>Limpar</Button>
+            <div className="list-group">
+                {itensCarrinho.map((item) => (
+                    <Item key={item.id} item={item} />
+                ))}
             </div>
         </div>
     );

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "titulo": "Prod 1",
+    "valor": 100,
+    "estrelas": 5
+  },
+  {
+    "id": 2,
+    "titulo": "Prod 2",
+    "valor": 75,
+    "estrelas": 4
+  },
+  {
+    "id": 3,
+    "titulo": "Prod 3",
+    "valor": 50,
+    "estrelas": 3
+  },
+  {
+    "id": 4,
+    "titulo": "Prod 4",
+    "valor": 200,
+    "estrelas": 5
+  },
+  {
+    "id": 5,
+    "titulo": "Prod 5",
+    "valor": 75,
+    "estrelas": 4
+  },
+  {
+    "id": 6,
+    "titulo": "Prod 6",
+    "valor": 50,
+    "estrelas": 3
+  }
+]
