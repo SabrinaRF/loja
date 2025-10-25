@@ -8,9 +8,10 @@ export default function Produto({ produto }) {
   const { adicionarItem } = useCarrinho();
 
   return (
+
     <Card style={{ width: '12rem', marginBottom: "1rem", marginTop: "2rem" }}>
       <Card.Img variant="top"
-        src={`https://placehold.co/60x60/000000/FFFFFF/png/?text=${produto.titulo}`} />{produto.imagem}
+        src={`https://placehold.co/60x60/000000/FFFFFF/png/?text=${produto.titulo}`} />
       <Card.Body>
         <Card.Title>{produto.titulo}</Card.Title>
         <Card.Text>
@@ -42,8 +43,7 @@ export default function Produto({ produto }) {
           onClick={() => adicionarItem(produto)}
           className="btn btn-success"
         >Comprar</button>
-
-        <Link to='/produto'>
+        <Link to={`/produto/${produto.id}`}>
           <button type="button" class="btn btn-success">Visualizar Produto
 
           </button>
