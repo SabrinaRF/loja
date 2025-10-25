@@ -8,14 +8,14 @@ export default function Item({ item }) {
         <div className="list-group-item d-flex align-items-center justify-content-between py-3">
             <div className="d-flex align-items-center gap-3">
                 <img
-                    src={`https://placehold.co/60x60/000000/FFFFFF/png/?text=${encodeURIComponent(item.titulo)}`}
+                    src={`https://placehold.co/60x60/000000/FFFFFF/png/?text=${item.titulo}`}
                     alt={item.titulo}
                     className="rounded-circle"
                     style={{ width: 60, height: 60, objectFit: 'cover' }}
                 />
                 <div>
                     <h6 className="mb-1">{item.titulo}</h6>
-                    <small>R$ {Number(item.valor).toFixed(2)}</small>
+                    <small>R$ {item.valor}</small>
                 </div>
             </div>
 

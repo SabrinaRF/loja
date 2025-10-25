@@ -1,7 +1,6 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
-import ListProd from "./ListarProd";
 import { useCarrinho } from "../../hooks/useCarrinho";
 
 export default function Produto({ produto }) {
