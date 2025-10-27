@@ -1,8 +1,8 @@
 import Button from '../button/Button';
-import {useCarrinho} from '../../hooks/useCarrinho';
+import { useCarrinho } from '../../hooks/useCarrinho';
 
-export default function Item({item}) {
-	const {removerItem, editarQuantidade} = useCarrinho();
+export default function Item({ item }) {
+	const { removerItem, editarQuantidade } = useCarrinho();
 
 	return (
 		<div className="list-group-item d-flex align-items-center justify-content-between py-3">
@@ -11,7 +11,7 @@ export default function Item({item}) {
 					src={`https://placehold.co/60x60/000000/FFFFFF/png/?text=${item.titulo}`}
 					alt={item.titulo}
 					className="rounded-circle"
-					style={{width: 60, height: 60, objectFit: 'cover'}}
+					style={{ width: 60, height: 60, objectFit: 'cover' }}
 				/>
 				<div>
 					<h6 className="mb-1">{item.titulo}</h6>
@@ -26,7 +26,6 @@ export default function Item({item}) {
 						editarQuantidade(item.id, Math.max(1, item.quantidade - 1))
 					}
 					disabled={item.quantidade === 1}
-					aria-label="Diminuir quantidade"
 				>
 					-
 				</button>
@@ -36,17 +35,15 @@ export default function Item({item}) {
 				<button
 					className="btn btn-outline-secondary btn-sm"
 					onClick={() => editarQuantidade(item.id, item.quantidade + 1)}
-					aria-label="Aumentar quantidade"
 				>
 					+
 				</button>
 
-				<button
-					className="btn btn-danger btn-sm"
+				<Button
+					style="danger"
 					onClick={() => removerItem(item.id)}
-				>
-					Excluir
-				</button>
+					texto={"Excluir"}
+				/>
 			</div>
 		</div>
 	);
